@@ -1,4 +1,4 @@
-# Cache Simulator
+## Cache Simulator
 Trace based cache simulator models data and victim caches given a set of parameters which are supplied through the config.txt file. The model works for 32 bit address space and data sizes of 4 bytes. The cache has been designed for accepting integer words in accordance with SPECint2006 benchmarks. 
 
 Format of the trace file : \<data load/store\> \<address\> \<data\>
