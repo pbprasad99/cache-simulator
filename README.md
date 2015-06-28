@@ -16,23 +16,43 @@ To run:
 
 Sample Output:
 
-Total Data Accesses:	481044
-------------------L1 Cache------------------
------L1 Reads:	320441
-Hits:		161054
-Misses:		159387
------L1 Writes:	160603
-Hits:		160495
-Misses:		108
-L1 Miss Rate:		0.33156
-----------------Victim Cache---------------
-Victim Reads:	159387
-Hits:		0
-Misses:		159387
-Victim Writes:	108
-Hits:		0
-Misses:		108
-Victim Miss Rate:	1
---------------Memory Traffic--------------
-(Memory->Cache):	10200768 bytes
-(Cache-> Memory):	6912 bytes
+Total Data Accesses:	481044  
+
+------------------L1 Cache------------------  
+
+-----L1 Reads:	320441  
+
+Hits:		161054  
+
+Misses:		159387  
+
+-----L1 Writes:	160603  
+
+Hits:		160495  
+
+Misses:		108  
+
+L1 Miss Rate:		0.33156  
+
+----------------Victim Cache---------------  
+
+Victim Reads:	159387  
+
+Hits:		0  
+
+Misses:		159387  
+
+Victim Writes:	108  
+
+Hits:		0  
+
+Misses:		108  
+
+Victim Miss Rate:  1  
+
+--------------Memory Traffic--------------  
+
+(Memory->Cache):	10200768 bytes  
+
+(Cache-> Memory):	6912 bytes  
+
