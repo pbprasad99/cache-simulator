@@ -5,16 +5,16 @@ Format of the trace file : \<data load/store\> \<address\> \<data\>
 
 For Config.txt : cache size must be specified n bytes. Asscociativity can be specified as 1(for direct mapped), 2(for Two way) and Full(for Fully associative)
                         
-To compile: 
+###To compile: 
 
 make all
 
-To run:
+###To run:
 
 ./sim config.txt mcf.trace output.txt
 
 
-Sample Output:
+###Sample Output:
 
 Total Data Accesses:	481044  
 
