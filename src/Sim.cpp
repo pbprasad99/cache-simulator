@@ -5,6 +5,7 @@
 #include "Block.h"
 #include "Set.h"
 #include "Cache.h"
+#include "../include/INIReader.h"
 
 using namespace std;
 
@@ -20,41 +21,23 @@ unsigned int atoh(string tempAddress)
 int main(int argc, char * argv[])
 {
 	// Command line: ./<executable> <configuration_file> <trace_file> <output_file>
-	ifstream inputfile1 (argv[1]);
-	ifstream inputfile2 (argv[2]);
-	ofstream outputfile (argv[3]);
-
-	cout << "Working...." << endl;
-
-	vector <string> a (5);
-	unsigned int cache_size, assoc, block_size, write_policy, victim_blockcount;
-
-	if (inputfile1.is_open())	/////////////////////////////////////////// Parse Configuration File
-	{
-		int i = 0;
-		string discard;
-		while ( inputfile1.good() )
-		{
-			inputfile1 >> discard;
-			inputfile1 >> a[i++];
-
-			if (i == 5)
-				break;
-		}
-		inputfile1.close();
+	INIReader reader(argv[1]);
+	if (reader.ParseError() < 0) {
+		std::cout << "Can't load '" << argv[1] << "'\n";
+		return 1;
 	}
 
-	cache_size = atoi(a[0].c_str());
-	block_size = atoi(a[2].c_str());
-	write_policy = atoi(a[3].c_str());
-	victim_blockcount = atoi(a[4].c_str());
-	if (a[1] == "Full")
-		assoc = cache_size/block_size;
-	else
-		assoc = atoi(a[1].c_str());
+	unsigned int cache_size = reader.GetInteger("cache", "size_bytes", 16384);
+	unsigned int assoc = reader.GetInteger("cache", "associativity", 2);
+	unsigned int block_size = reader.GetInteger("cache", "block_size", 64);
+	unsigned int write_policy = reader.GetInteger("cache", "write_policy", 2);
+	unsigned int victim_blockcount = reader.GetInteger("victim_cache", "size_blocks", 16);
+	std::string replacement_policy = reader.Get("policy", "replacement", "LRU");
 
-	Cache DataC (cache_size, assoc, block_size);
-	Cache VictimC (block_size*victim_blockcount, victim_blockcount, block_size);
+	ifstream inputfile2(argv[2]);
+	ofstream outputfile(argv[3]);
+
+	cout << "Working...." << endl;
 
 	string tempAccess, tempData, tempAddress;
 	int data;
@@ -65,6 +48,9 @@ int main(int argc, char * argv[])
 	int VreadHit = 0, VreadMiss = 0, VwriteHit = 0, VwriteMiss = 0;
 	int fromMem = 0, toMem = 0;
 	float L1missRate = 0.0f, VmissRate = 0.0f;
+
+	Cache DataC (cache_size, assoc, block_size);
+	Cache VictimC (block_size*victim_blockcount, victim_blockcount, block_size);
 
 	if (inputfile2.is_open())	/////////////////////////////////////////////////// Parse Trace File
 	{

@@ -1,0 +1,17 @@
+/build/*
+*.o
+*.out
+*.dSYM/
+*.exe
+
+# Test binaries and artifacts
+/tests/test_cache
+/tests/test_cache.dSYM/
+
+# Editor/OS files
+.DS_Store
+*.swp
+*~
+
+# Logs and generated files
+output.txt

@@ -49,7 +49,7 @@ make all
 
 ## Run Instructions
 ```sh 
-./build/sim config.txt mcf.trace output.txt
+./build/sim config.ini mcf.trace output.txt
 ```
 
 ---
