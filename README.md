@@ -16,7 +16,7 @@ A trace-based cache simulator that models data and victim caches using parameter
 ```
 cache-simulator/
 ├── Makefile
-├── config.txt         # Configuration file for cache parameters
+├── config.ini         # Configuration file for cache parameters
 ├── mcf.trace          # Example trace file
 ├── output.txt         # Output file (generated after running)
 ├── include/           # Header files
