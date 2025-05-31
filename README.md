@@ -33,7 +33,7 @@ Each line in the trace file should be:
 <data load/store> <address> <data>
 ```
 
-## Config File Format (`config.txt`)
+## Config File Format (`config.ini`)
 - **Cache size:** Specify in bytes (e.g., `16384`)
 - **Associativity:**
   - `1` for direct-mapped
