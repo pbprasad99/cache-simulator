@@ -20,11 +20,12 @@ Set::Set(int cache_size, int assoc, int block_size)
 
 unsigned int Set::LRUblock(void)
 {
-		unsigned int z;
+		unsigned int z = 0; // initialized 'z'
 		int x = Blocks[0].timestamp;
+		
 		for (int i=0; i <= (blkcount-1); i++)
-		{
-			if (Blocks[i].timestamp > x)
+		{			
+			if (Blocks[i].timestamp >= x) // Changed '>' to '>='
 			{
 				x = Blocks[i].timestamp;
 				z = i;

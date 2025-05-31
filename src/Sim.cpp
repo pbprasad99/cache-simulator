@@ -59,12 +59,12 @@ int main(int argc, char * argv[])
 	string tempAccess, tempData, tempAddress;
 	int data;
 	unsigned int address;
-	int MAXREF;
-	int L1reads, Vreads, L1writes, Vwrites;
-	int L1readHit, L1readMiss, L1writeHit, L1writeMiss;
-	int VreadHit, VreadMiss, VwriteHit, VwriteMiss;
-	int fromMem, toMem;
-	float L1missRate, VmissRate;
+	int MAXREF = 0;
+	int L1reads = 0, Vreads = 0, L1writes = 0, Vwrites = 0;
+	int L1readHit = 0, L1readMiss = 0, L1writeHit = 0, L1writeMiss = 0;
+	int VreadHit = 0, VreadMiss = 0, VwriteHit = 0, VwriteMiss = 0;
+	int fromMem = 0, toMem = 0;
+	float L1missRate = 0.0f, VmissRate = 0.0f;
 
 	if (inputfile2.is_open())	/////////////////////////////////////////////////// Parse Trace File
 	{

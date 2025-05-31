@@ -1,58 +1,99 @@
-## Cache Simulator
-Trace based cache simulator models data and victim caches given a set of parameters which are supplied through the config.txt file. The model works for 32 bit address space and data sizes of 4 bytes. The cache has been designed for accepting integer words in accordance with SPECint2006 benchmarks. 
+# Cache Simulator
 
-Format of the trace file : \<data load/store\> \<address\> \<data\>
+A trace-based cache simulator that models data and victim caches using parameters supplied via a configuration file. Designed for a 32-bit address space and 4-byte data sizes, this simulator is tailored for integer word operations as seen in SPECint2006 benchmarks.
 
-For Config.txt : cache size must be specified n bytes. Asscociativity can be specified as 1(for direct mapped), 2(for Two way) and Full(for Fully associative)
-                        
-###To compile: 
+---
 
+## Features
+- **Configurable cache size and associativity**
+- **Support for direct-mapped, two-way, and fully associative caches**
+- **Victim cache modeling**
+- **Detailed statistics: hits, misses, miss rates, and memory traffic**
+
+---
+
+## File Structure
+```
+cache-simulator/
+├── Makefile
+├── config.txt         # Configuration file for cache parameters
+├── mcf.trace          # Example trace file
+├── output.txt         # Output file (generated after running)
+├── include/           # Header files
+├── src/               # Source files
+├── build/             # Build artifacts (object files, executable)
+└── README.md
+```
+
+---
+
+## Trace File Format
+Each line in the trace file should be:
+```
+<data load/store> <address> <data>
+```
+
+## Config File Format (`config.txt`)
+- **Cache size:** Specify in bytes (e.g., `16384`)
+- **Associativity:**
+  - `1` for direct-mapped
+  - `2` for two-way set associative
+  - `Full` for fully associative
+
+---
+
+## Build Instructions
+```sh
 make all
+```
 
-###To run:
+## Run Instructions
+```sh 
+./build/sim config.txt mcf.trace output.txt
+```
 
-./sim config.txt mcf.trace output.txt
+---
 
+## Sample Output
+```
+Total Data Accesses:   481044
 
-###Sample Output:
+------------------L1 Cache------------------
 
-Total Data Accesses:	481044  
+-----L1 Reads:        320441
+Hits:                161054
+Misses:              159387
 
-------------------L1 Cache------------------  
+-----L1 Writes:       160603
+Hits:                160495
+Misses:              108
 
------L1 Reads:	320441  
+L1 Miss Rate:         0.33156
 
-Hits:		161054  
+----------------Victim Cache---------------
 
-Misses:		159387  
+Victim Reads:         159387
+Hits:                 0
+Misses:               159387
 
------L1 Writes:	160603  
+Victim Writes:        108
+Hits:                 0
+Misses:               108
 
-Hits:		160495  
+Victim Miss Rate:     1
 
-Misses:		108  
+--------------Memory Traffic--------------
 
-L1 Miss Rate:		0.33156  
+(Memory -> Cache):    10200768 bytes
+(Cache -> Memory):    6912 bytes
+```
 
-----------------Victim Cache---------------  
+---
 
-Victim Reads:	159387  
+## License
+MIT License
 
-Hits:		0  
+---
 
-Misses:		159387  
-
-Victim Writes:	108  
-
-Hits:		0  
-
-Misses:		108  
-
-Victim Miss Rate:  1  
-
---------------Memory Traffic--------------  
-
-(Memory->Cache):	10200768 bytes  
-
-(Cache-> Memory):	6912 bytes  
-
+## Author
+P. B. Prasad
