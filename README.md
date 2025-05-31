@@ -56,36 +56,26 @@ make all
 
 ## Sample Output
 ```
-Total Data Accesses:   481044
-
+Total Data Accesses:    727230
 ------------------L1 Cache------------------
-
------L1 Reads:        320441
-Hits:                161054
-Misses:              159387
-
------L1 Writes:       160603
-Hits:                160495
-Misses:              108
-
-L1 Miss Rate:         0.33156
-
+-----L1 Reads:  5972
+Hits:           5761
+Misses:         211
+-----L1 Writes: 721258
+Hits:           2091
+Misses:         719167
+L1 Miss Rate:           0.989203
 ----------------Victim Cache---------------
-
-Victim Reads:         159387
-Hits:                 0
-Misses:               159387
-
-Victim Writes:        108
-Hits:                 0
-Misses:               108
-
-Victim Miss Rate:     1
-
+Victim Reads:   211
+Hits:           2
+Misses:         209
+Victim Writes:  719167
+Hits:           16
+Misses:         719151
+Victim Miss Rate:       0.999975
 --------------Memory Traffic--------------
-
-(Memory -> Cache):    10200768 bytes
-(Cache -> Memory):    6912 bytes
+(Memory->Cache):        13376 bytes
+(Cache-> Memory):       46172864 bytes
 ```
 
 ---
